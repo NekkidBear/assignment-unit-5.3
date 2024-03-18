@@ -83,6 +83,48 @@ console.log("Albums by Garth Brooks", findByArtist(myCollection, "Garth Brooks")
 console.log("Albums by Queen", findByArtist(myCollection, "Queen"));
 console.log("Albums by Michael Jackson", findByArtist(myCollection, "Michael Jackson"));
 
+/**### Stretch Goal
+
+- Create a function called `search` that will allow for searching by `artist` **and** `yearPublished`. This function should:
+  - Take in a `collection` parameter.
+  - Take in a `searchCriteria` parameter. Create your solution based on a *search object* that has these properties:
+    - ```
+      { artist: 'Ray Charles', yearPublished: 1957 }
+      ```
+  - The returned output from `search` should meet these requirements:
+    - Return a new array of all items in the `collection` matching **all** of the search criteria.
+    - If no results are found, return an empty array.
+    - If there is no search object, an empty search object, or missing `artist`/`yearPublished` data provided as input, `return` **all albums** from the `collection` being searched.
+*/
+let searchParameters = {
+  artist: "",
+  yearPublished: undefined
+}
+function search(collection, searchCriteria){
+  let matches = [];
+  for(let album of collection){
+    if (album.artist === searchCriteria.artist && 
+      album.yearPublished === searchCriteria.yearPublished)
+      {
+      //all criteria matches
+        matches.push(album);
+        continue; 
+      } else if (isNull(searchCriteria) ||
+        searchCriteria.keys===0 ||
+        searchCriteria.artist.length === 0 ||
+        searchCriteria.yearPublished === 0)
+        {return collection;
+      }
+  }
+  return matches;
+}
+console.log("Testing search function; Criteria: { artist: 'Ray Charles', yearPublished: 1957 }");
+searchParameters = { artist: 'Ray Charles', yearPublished: 1957 };
+search(myCollection, searchParameters);
+
+
+
+
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
