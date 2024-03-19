@@ -116,6 +116,7 @@ function search(collection, searchCriteria){
         searchCriteria.artist.length === 0 ||
         searchCriteria.yearPublished.length === 0)
         {
+          console.log("Invalid search criteria. Here are the albums in your collection")
           return collection;
       }
   }
@@ -129,13 +130,13 @@ searchParameters = { artist: 'Queen', yearPublished: 1966 };
 console.log("results: ", search(myCollection, searchParameters));
 console.log("Testing blank criteria, should return the whole colection.");
 searchParameters = { };
-search(myCollection, searchParameters);
+console.log("Results: ", search(myCollection, searchParameters));
 console.log("Testing incomplete criteria (no year), should return the whole collection");
 searchParameters = { artist: 'Garth Brooks' };
-search(myCollection, searchParameters);
+console.log("Results: ", search(myCollection, searchParameters));
 console.log("testing missing artist, should return the whole collection")
 searchParameters = { yearPublished: 1966 };
-search(myCollection, searchParameters);
+console.log("Results: ", search(myCollection, searchParameters));
 
 
 
