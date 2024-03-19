@@ -96,7 +96,7 @@ console.log("Albums by Michael Jackson", findByArtist(myCollection, "Michael Jac
     - If no results are found, return an empty array.
     - If there is no search object, an empty search object, or missing `artist`/`yearPublished` data provided as input, `return` **all albums** from the `collection` being searched.
 */
-let searchParameters = {
+let searchCriteria = {
   artist: "",
   yearPublished: undefined
 }
@@ -123,20 +123,20 @@ function search(collection, searchCriteria){
   return matches;
 }
 console.log("Testing search function; Criteria: { artist: 'Ray Charles', yearPublished: 1957 }, expect empty array");
-searchParameters = { artist: 'Ray Charles', yearPublished: 1957 };
-console.log("Results: ", search(myCollection, searchParameters));
+searchCriteria = { artist: 'Ray Charles', yearPublished: 1957 };
+console.log("Results: ", search(myCollection, searchCriteria));
 console.log("New search criteria: {artist: 'Queen', yearPublished: 1966}, expect 'Bohemian Rhapsody'");
-searchParameters = { artist: 'Queen', yearPublished: 1966 };
-console.log("results: ", search(myCollection, searchParameters));
+searchCriteria = { artist: 'Queen', yearPublished: 1966 };
+console.log("results: ", search(myCollection, searchCriteria));
 console.log("Testing blank criteria ({ artist: '', yearPublished: ''}), should return the whole colection.");
-searchParameters = { artist: '', yearPublished: ''};
-console.log("Results: ", search(myCollection, searchParameters));
+searchCriteria = { artist: '', yearPublished: ''};
+console.log("Results: ", search(myCollection, searchCriteria));
 console.log("Testing incomplete criteria (no year), should return the whole collection");
-searchParameters = { artist: 'Garth Brooks' , year: undefined};
-console.log("Results: ", search(myCollection, searchParameters));
+searchCriteria = { artist: 'Garth Brooks' , year: undefined};
+console.log("Results: ", search(myCollection, searchCriteria));
 console.log("testing missing artist, should return the whole collection")
-searchParameters = { artist: '', yearPublished: 1966 };
-console.log("Results: ", search(myCollection, searchParameters));
+searchCriteria = { artist: '', yearPublished: 1966 };
+console.log("Results: ", search(myCollection, searchCriteria));
 
 
 
