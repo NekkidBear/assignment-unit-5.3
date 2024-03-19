@@ -108,19 +108,33 @@ function search(collection, searchCriteria){
       {
       //all criteria matches
         matches.push(album);
+        console.log("found a match!");
         continue; 
-      } else if (searchCriteria === null ||
+      } else if (
+        typeof searchCriteria === 'undefined' ||
         searchCriteria.keys===0 ||
         searchCriteria.artist.length === 0 ||
-        searchCriteria.yearPublished === 0)
+        searchCriteria.yearPublished.length === 0)
         {
           return collection;
       }
   }
   return matches;
 }
-console.log("Testing search function; Criteria: { artist: 'Ray Charles', yearPublished: 1957 }");
+console.log("Testing search function; Criteria: { artist: 'Ray Charles', yearPublished: 1957 }, expect empty array");
 searchParameters = { artist: 'Ray Charles', yearPublished: 1957 };
+console.log("Results: ", search(myCollection, searchParameters));
+console.log("New search criteria: {artist: 'Queen', yearPublished: 1966}, expect 'Bohemian Rhapsody'");
+searchParameters = { artist: 'Queen', yearPublished: 1966 };
+console.log("results: ", search(myCollection, searchParameters));
+console.log("Testing blank criteria, should return the whole colection.");
+searchParameters = { };
+search(myCollection, searchParameters);
+console.log("Testing incomplete criteria (no year), should return the whole collection");
+searchParameters = { artist: 'Garth Brooks' };
+search(myCollection, searchParameters);
+console.log("testing missing artist, should return the whole collection")
+searchParameters = { yearPublished: 1966 };
 search(myCollection, searchParameters);
 
 
