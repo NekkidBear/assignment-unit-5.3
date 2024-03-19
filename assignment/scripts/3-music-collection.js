@@ -109,11 +109,12 @@ function search(collection, searchCriteria){
       //all criteria matches
         matches.push(album);
         continue; 
-      } else if (isNull(searchCriteria) ||
+      } else if (searchCriteria === null ||
         searchCriteria.keys===0 ||
         searchCriteria.artist.length === 0 ||
         searchCriteria.yearPublished === 0)
-        {return collection;
+        {
+          return collection;
       }
   }
   return matches;
