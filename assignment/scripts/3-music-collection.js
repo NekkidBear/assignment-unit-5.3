@@ -129,13 +129,13 @@ console.log("New search criteria: {artist: 'Queen', yearPublished: 1966}, expect
 searchParameters = { artist: 'Queen', yearPublished: 1966 };
 console.log("results: ", search(myCollection, searchParameters));
 console.log("Testing blank criteria, should return the whole colection.");
-searchParameters = { };
+searchParameters = { artist: "", yearPublished: ""};
 console.log("Results: ", search(myCollection, searchParameters));
 console.log("Testing incomplete criteria (no year), should return the whole collection");
-searchParameters = { artist: 'Garth Brooks' };
+searchParameters = { artist: 'Garth Brooks' , year: ""};
 console.log("Results: ", search(myCollection, searchParameters));
 console.log("testing missing artist, should return the whole collection")
-searchParameters = { yearPublished: 1966 };
+searchParameters = { artist: "", yearPublished: 1966 };
 console.log("Results: ", search(myCollection, searchParameters));
 
 
