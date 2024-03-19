@@ -111,10 +111,10 @@ function search(collection, searchCriteria){
         console.log("found a match!");
         continue; 
       } else if (
-        typeof searchCriteria === 'undefined' ||
-        searchCriteria.keys===0 ||
-        searchCriteria.artist.length === 0 ||
-        searchCriteria.yearPublished.length === 0)
+        typeof searchCriteria === 'undefined' || //check if object exists
+        searchCriteria.keys===0 || 
+        searchCriteria.artist === '' ||
+        searchCriteria.yearPublished=== undefined)
         {
           console.log("Invalid search criteria. Here are the albums in your collection")
           return collection;
@@ -128,14 +128,14 @@ console.log("Results: ", search(myCollection, searchParameters));
 console.log("New search criteria: {artist: 'Queen', yearPublished: 1966}, expect 'Bohemian Rhapsody'");
 searchParameters = { artist: 'Queen', yearPublished: 1966 };
 console.log("results: ", search(myCollection, searchParameters));
-console.log("Testing blank criteria, should return the whole colection.");
-searchParameters = { artist: "", yearPublished: ""};
+console.log("Testing blank criteria ({ artist: '', yearPublished: ''}), should return the whole colection.");
+searchParameters = { artist: '', yearPublished: ''};
 console.log("Results: ", search(myCollection, searchParameters));
 console.log("Testing incomplete criteria (no year), should return the whole collection");
-searchParameters = { artist: 'Garth Brooks' , year: ""};
+searchParameters = { artist: 'Garth Brooks' , year: undefined};
 console.log("Results: ", search(myCollection, searchParameters));
 console.log("testing missing artist, should return the whole collection")
-searchParameters = { artist: "", yearPublished: 1966 };
+searchParameters = { artist: '', yearPublished: 1966 };
 console.log("Results: ", search(myCollection, searchParameters));
 
 
