@@ -103,6 +103,7 @@ let searchCriteria = {
 function search(collection, searchCriteria){
   let matches = [];
   for(let album of collection){
+    console.log("Search criteria :", searchCriteria);
     if (album.artist === searchCriteria.artist && 
       album.yearPublished === searchCriteria.yearPublished)
       {
