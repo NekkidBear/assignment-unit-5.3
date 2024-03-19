@@ -112,9 +112,9 @@ function search(collection, searchCriteria){
         continue; 
       } else if (
         typeof searchCriteria === 'undefined' || //check if object exists
-        searchCriteria.keys===0 || 
-        searchCriteria.artist === '' ||
-        searchCriteria.yearPublished=== undefined)
+        searchCriteria.keys===0 || //check if object is empty
+        searchCriteria.artist === '' || //check if there is an artist value
+        searchCriteria.yearPublished=== undefined) //check if there is a year provided
         {
           console.log("Invalid search criteria. Here are the albums in your collection")
           return collection;
